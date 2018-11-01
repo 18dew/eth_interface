@@ -9,6 +9,10 @@ const fs                  = require('fs');
 const wallet = process.env.wallet
 const password = process.env.password
 
+/**
+ * A Web3 Interface Class.
+ * @class WEb3interface
+ */
 class web3Interface{
   constructor(opts){
     this.provider = process.env.provider || opts.provider ||'https://localhost:8545';
@@ -27,6 +31,13 @@ class web3Interface{
     });
   }
 
+  /**
+   * Generates a raw Data required for interfacing with any contracts
+   * @param {string} Contract              - Contract where method is to be called
+   * @param {string} Method                - Method called for the specific contract
+   * @param {array} Arguments              - Array of arguments required by the address
+   * @returns {string} getDataString       - RLP formated and string for getData
+   */
   getData(contract,method,args){
     var self = this;
     return new Promise(async function(resolve, reject) {
@@ -49,6 +60,13 @@ class web3Interface{
     });
   }
 
+  /**
+   * Generates a call request to the ethNetwork and returns the state value from the network
+   * @param {string} Contract              - Contract where method is to be called
+   * @param {string} Method                - Method called for the specific contract
+   * @param {array} Arguments              - Array of arguments required by the address
+   * @returns {Object} state               - State from the network of the request
+   */
   callData(contract,method,args){
     var self = this;
     return new Promise(async function(resolve, reject) {
@@ -71,6 +89,13 @@ class web3Interface{
     });
   }
 
+  /**
+   * Estimategas for the request.
+   * @param {string} Contract              - Contract where method is to be called
+   * @param {string} Method                - Method called for the specific contract
+   * @param {array} Arguments              - Array of arguments required by the address
+   * @returns {Number} gas                 - Gas Value for executing the transaction on the network
+   */
   estimateGas(contract,method,args){
     var self = this;
     return new Promise(async function(resolve, reject) {
@@ -93,10 +118,22 @@ class web3Interface{
     });
   }
 
+  /**
+   * Fetches the nonce of the address.
+   * @param {String} Address               - Address of the wallet
+   * @returns {Number} nonce               - Nonce for the address
+   */
   fetchNonce( address ){
     return this.Web3.eth.getTransactionCount(address);
   }
 
+  /**
+   * Generates an unsigned tx from the required address
+   * @param {string} Contract              - Contract where method is to be called
+   * @param {string} Method                - Method called for the specific contract
+   * @param {array} Arguments              - Array of arguments required by the address
+   * @returns {String} RawTx               - Raw unsigned Tx
+   */
   genTx(contract,method,args){
     var self = this;
     return new Promise(async function(resolve, reject) {
@@ -126,6 +163,13 @@ class web3Interface{
     });
   }
 
+  /**
+   * Signes and Send the request on to the network
+   * @param {string} Contract              - Contract where method is to be called
+   * @param {string} Method                - Method called for the specific contract
+   * @param {array} Arguments              - Array of arguments required by the address
+   * @returns {String} Tx-Receipt          - Tx Receipt.
+   */
   signTx(contract,method,args){
     var self = this;
     return new Promise(async function(resolve, reject) {
