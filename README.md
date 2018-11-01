@@ -10,3 +10,6 @@ List of parameters required to be set
 - contractPath ( As Inputs to constructor )
 - Wallet JSON ( As part of environment variables )
 - Password for wallet ( As part of environment variables )  
+
+
+Refer to Wiki page of this repo for detailed usage 
