@@ -1,0 +1,30 @@
+{
+  "name": "eth_interface",
+  "version": "0.0.1",
+  "description": "Simple Yet Dynamic interface for Ethereum ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18dew/eth_interface.git"
+  },
+  "keywords": [
+    "Ethereum",
+    "Interface"
+  ],
+  "author": "Harsh Patel",
+  "license": "MIT ",
+  "bugs": {
+    "url": "https://github.com/18dew/eth_interface/issues"
+  },
+  "homepage": "https://github.com/18dew/eth_interface#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "ethereumjs-tx": "^1.3.7",
+    "fs": "0.0.1-security",
+    "keythereum": "^1.0.4",
+    "web3": "^1.0.0-beta.36"
+  }
+}
